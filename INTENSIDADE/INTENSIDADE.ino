@@ -1,16 +1,57 @@
-float luminosidade = 0;
-int led = 3;
-const int ldr = A0;
+// Definição dos pinos
+const int pinoCLK = 3;  // PINO DIGITAL (CLK)
+const int pinoDT = 4;   // PINO DIGITAL (DT)
+const int pinoSW = 5;   // PINO DIGITAL (SW)
+const int ledPin = 9;   // PINO DO LED
 
-void setup(){
-  pinMode(led, OUTPUT);
-  pinMode(ldr, INPUT);
-  Serial.begin(9600);
+// Variáveis de controle
+int contadorPos = 0;    // CONTADOR DE POSIÇÕES DO ENCODER
+int ultPosicao;         // ÚLTIMA LEITURA DO PINO CLK
+int leituraCLK;         // LEITURA DO PINO CLK
+boolean bCW;            // SENTIDO DE ROTAÇÃO (HORÁRIO / ANTI-HORÁRIO)
+int brightness = 0;     // BRILHO DO LED
+
+void setup() {
+  Serial.begin(9600);                    // INICIALIZA A SERIAL
+  pinMode(pinoCLK, INPUT);               // DEFINE O PINO CLK COMO ENTRADA
+  pinMode(pinoDT, INPUT);                // DEFINE O PINO DT COMO ENTRADA
+  pinMode(pinoSW, INPUT_PULLUP);         // ATIVA O RESISTOR PULL-UP INTERNO
+  pinMode(ledPin, OUTPUT);               // DEFINE O PINO DO LED COMO SAÍDA
+  ultPosicao = digitalRead(pinoCLK);     // ARMAZENA A LEITURA INICIAL DO PINO CLK
 }
 
-void loop(){
-  luminosidade = map(analogRead(ldr), 0, 1023, 0, 255);
-  Serial.println(luminosidade);
-  analogWrite(led, luminosidade);
-  delay(1000);
+void loop() {
+  leituraCLK = digitalRead(pinoCLK);  // LÊ O VALOR ATUAL DO PINO CLK
+
+  // Verifica se houve mudança na posição
+  if (leituraCLK != ultPosicao) {
+    // Determina o sentido da rotação
+    if (digitalRead(pinoDT) != leituraCLK) {  
+      // Sentido horário
+      contadorPos = max(contadorPos - 5, 0);  // DECREMENTA CONTAGEM, MANTENDO MÍNIMO EM 0
+      bCW = true;  // SENTIDO HORÁRIO
+    } else {
+      // Sentido anti-horário
+      contadorPos = min(contadorPos + 5, 255); // INCREMENTA CONTAGEM, MANTENDO MÁXIMO EM 255
+      bCW = false; // SENTIDO ANTI-HORÁRIO
+    }
+
+    // Atualiza o brilho do LED
+    analogWrite(ledPin, contadorPos);  
+
+    // Exibe informações na serial
+    Serial.print("Giro no ");
+    Serial.print(bCW ? "sentido horário" : "sentido anti-horário");
+    Serial.print(" / Posição do encoder: ");
+    Serial.println(contadorPos);
+  }
+
+  // Verifica se o botão foi pressionado
+  if (digitalRead(pinoSW) == LOW) {  
+    Serial.println("Botão pressionado");
+    delay(200);  // INTERVALO DE 200 MILISSEGUNDOS
+  }
+
+  // Atualiza a última posição
+  ultPosicao = leituraCLK;  
 }
