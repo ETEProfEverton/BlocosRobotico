@@ -13,7 +13,6 @@ Este projeto implementa um controle de brilho de LED utilizando um encoder rotat
 - Arduino (ou qualquer microcontrolador compatível)
 - Encoder rotativo com botão integrado
 - LED
-- Resistores (se necessário)
 - Jumpers e protoboard
 
 ## Conexões
