@@ -1,7 +1,3 @@
-Aqui está um exemplo de README para o projeto do buzzer com botão:
-
----
-
 # Projeto: Buzzer com Botão
 
 ## Descrição
@@ -69,7 +65,3 @@ Sinta-se à vontade para contribuir com melhorias, adições ou correções. Se 
 ## Licença
 
 Este projeto é de domínio público. Sinta-se livre para usar, modificar e distribuir.
-
----
-
-Sinta-se à vontade para personalizar qualquer parte do README conforme necessário!
