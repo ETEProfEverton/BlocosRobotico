@@ -1,6 +1,6 @@
 // Definição dos pinos
-const int buzzerPin = 10;  // Pino do buzzer
-const int buttonPin = 9;   // Pino do botão
+const int buzzerPin = 5;  // Pino do buzzer
+const int buttonPin = 7;   // Pino do botão
 
 // Frequência da nota
 int nota = 440; // Lá (A)

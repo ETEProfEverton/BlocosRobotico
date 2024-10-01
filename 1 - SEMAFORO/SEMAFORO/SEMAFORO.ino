@@ -1,6 +1,6 @@
 // Definição dos pinos para os LEDs
-int pinVM = 9; // Pino do LED vermelho
-int pinVD = 10; // Pino do LED verde
+int pinVM = 2; // Pino do LED vermelho
+int pinVD = 3; // Pino do LED verde
 
 void setup() {
   // Configura os pinos dos LEDs como saída

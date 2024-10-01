@@ -1,6 +1,6 @@
 // constantes que não mudam. Elas são usadas aqui para definir os números dos pinos:
-const int buttonPin = 2;  // o número do pino do botão
-const int ledPin = 13;    // o número do pino do LED
+const int buttonPin = 7;  // o número do pino do botão
+const int ledPin = 3;    // o número do pino do LED
 
 // variáveis que mudarão:
 int buttonState = 0;  // variável para ler o status do botão

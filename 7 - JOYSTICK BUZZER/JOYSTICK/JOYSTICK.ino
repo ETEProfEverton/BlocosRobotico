@@ -1,7 +1,7 @@
 // Definição dos pinos
 const int pinJoystickX = A0;  // Pino do eixo X do joystick
 const int pinJoystickY = A1;  // Pino do eixo Y do joystick
-const int pinBuzzer = 9;      // Pino do buzzer
+const int pinBuzzer = 5;      // Pino do buzzer
 
 // Variáveis para armazenar as leituras do joystick
 int valorX = 0;

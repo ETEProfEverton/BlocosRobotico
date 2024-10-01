@@ -1,5 +1,5 @@
 // Definição do pino do LED
-const int pinoLED = 13; // O pino onde o LED está conectado
+const int pinoLED = 3; // O pino onde o LED está conectado
 
 // A função de configuração é chamada uma vez quando o programa inicia
 void setup() {

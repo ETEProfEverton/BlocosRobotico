@@ -1,8 +1,8 @@
 // Definição dos pinos
-const int pinoCLK = 3;  // PINO DIGITAL (CLK)
-const int pinoDT = 4;   // PINO DIGITAL (DT)
-const int pinoSW = 5;   // PINO DIGITAL (SW)
-const int buzzerPin = 9; // PINO DO BUZZER
+const int pinoCLK = 11;  // PINO DIGITAL (CLK)
+const int pinoDT = 12;   // PINO DIGITAL (DT)
+//const int pinoSW = 5;   // PINO DIGITAL (SW)
+const int buzzerPin = 5; // PINO DO BUZZER
 
 // Variáveis de controle
 int contadorFreq = 440; // FREQUÊNCIA INICIAL (em Hz)
@@ -17,7 +17,7 @@ void setup() {
   Serial.begin(9600);                    // INICIALIZA A SERIAL
   pinMode(pinoCLK, INPUT);               // DEFINE O PINO CLK COMO ENTRADA
   pinMode(pinoDT, INPUT);                // DEFINE O PINO DT COMO ENTRADA
-  pinMode(pinoSW, INPUT_PULLUP);         // ATIVA O RESISTOR PULL-UP INTERNO
+  //pinMode(pinoSW, INPUT_PULLUP);         // ATIVA O RESISTOR PULL-UP INTERNO
   pinMode(buzzerPin, OUTPUT);            // DEFINE O PINO DO BUZZER COMO SAÍDA
   ultPosicao = digitalRead(pinoCLK);     // ARMAZENA A LEITURA INICIAL DO PINO CLK
   noTone(buzzerPin);                      // Garante que o buzzer esteja desligado inicialmente
@@ -50,12 +50,12 @@ void loop() {
   }
 
   // Verifica se o botão foi pressionado
-  if (digitalRead(pinoSW) == LOW && lastButtonState == HIGH) {  
+  /*if (digitalRead(pinoSW) == LOW && lastButtonState == HIGH) {  
     Serial.println("Botão pressionado");
     delay(200);  // INTERVALO DE 200 MILISSEGUNDOS
   }
   lastButtonState = digitalRead(pinoSW); // Atualiza o estado do botão
-
+*/
   // Atualiza a última posição
   ultPosicao = leituraCLK;  
 }

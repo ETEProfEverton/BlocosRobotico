@@ -1,8 +1,8 @@
 // Definição dos pinos
-const int pinoCLK = 3;  // PINO DIGITAL (CLK)
-const int pinoDT = 4;   // PINO DIGITAL (DT)
-const int pinoSW = 5;   // PINO DIGITAL (SW)
-const int ledPin = 9;   // PINO DO LED
+const int pinoCLK = 11;  // PINO DIGITAL (CLK)
+const int pinoDT = 12;   // PINO DIGITAL (DT)
+//const int pinoSW = 5;   // PINO DIGITAL (SW)
+const int ledPin = 3;   // PINO DO LED
 
 // Variáveis de controle
 int contadorPos = 0;    // CONTADOR DE POSIÇÕES DO ENCODER
@@ -15,7 +15,7 @@ void setup() {
   Serial.begin(9600);                    // INICIALIZA A SERIAL
   pinMode(pinoCLK, INPUT);               // DEFINE O PINO CLK COMO ENTRADA
   pinMode(pinoDT, INPUT);                // DEFINE O PINO DT COMO ENTRADA
-  pinMode(pinoSW, INPUT_PULLUP);         // ATIVA O RESISTOR PULL-UP INTERNO
+  //pinMode(pinoSW, INPUT_PULLUP);         // ATIVA O RESISTOR PULL-UP INTERNO
   pinMode(ledPin, OUTPUT);               // DEFINE O PINO DO LED COMO SAÍDA
   ultPosicao = digitalRead(pinoCLK);     // ARMAZENA A LEITURA INICIAL DO PINO CLK
 }
@@ -47,10 +47,10 @@ void loop() {
   }
 
   // Verifica se o botão foi pressionado
-  if (digitalRead(pinoSW) == LOW) {  
+  /*if (digitalRead(pinoSW) == LOW) {  
     Serial.println("Botão pressionado");
     delay(200);  // INTERVALO DE 200 MILISSEGUNDOS
-  }
+  }*/
 
   // Atualiza a última posição
   ultPosicao = leituraCLK;  
